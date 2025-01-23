@@ -22,33 +22,46 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "frontend",
-    title: "project 1",
-    description: "Lorem ipsum dolor sit amet, consecteturssssssssssssssss",
-    stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "",
-    github: "",
+    category: "fullstack",
+    title: "Convit3 Digital",
+    description:
+      "Full stack application - (Nest.JS and Next.Js) for event management.",
+    stack: [
+      { name: "Next.Js" },
+      { name: "Tailwind.css" },
+      { name: "Javascript" },
+      { name: "Nest.js" },
+    ],
+    image: "/assets/work/convite-digital.jpg",
+    github: "https://github.com/thhenrique23/projeto-convite-digital",
   },
   {
     num: "02",
     category: "fullstack",
-    title: "project 2",
-    description: "Lorem ipsum dolor sit amet, consecteturssssssssssssssss",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "",
+    title: "Quiz Next",
+    description: "Web Application for Questions & Answers",
+    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
+    image: "/assets/work/quiz-next.jpg",
+    github: "https://github.com/thhenrique23/quiz-next",
   },
   {
     num: "03",
     category: "frontend",
-    title: "project 3",
-    description: "Lorem ipsum dolor sit amet, consecteturssssssssssssssss",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
-    image: "/assets/work/thumb3.png",
-    live: "",
+    title: "NetFlix Clone",
+    description: "Clone Layout from Netflix",
+    stack: [{ name: "React.JS" }, { name: "CSS.3" }],
+    image: "/assets/work/netflix-clone.jpg",
     github: "",
+  },
+  {
+    num: "04",
+    category: "frontend",
+    title: "Rick and Morty Persons",
+    description:
+      "Web Application that show all persons of Rick and Morty series",
+    stack: [{ name: "React.JS" }, { name: "CSS.3" }],
+    image: "/assets/work/rick-morty.jpg",
+    github: "https://github.com/thhenrique23/rickandmorty-web",
   },
 ];
 
@@ -76,7 +89,7 @@ const Work = () => {
                 {project.num}
               </div>
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project
+                {project.title}
               </h2>
 
               <p className="text-white/60">{project.description}</p>
@@ -94,40 +107,22 @@ const Work = () => {
               {/* border */}
               <div className="border border-white/20"></div>
               {/* buttons */}
-              <div className="flex items-center gap-4">
-                {/* live project button */}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsArrowUpRight
-                          size={24}
-                          className="text-white text-3xl group-hover:text-accent"
-                        />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                {/* github project button */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub
-                          size={24}
-                          className="text-white text-3xl group-hover:text-accent"
-                        />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-              </div>
+              {/* github project button */}
+              <Link href={project.github}>
+                <TooltipProvider delayDuration={100}>
+                  <Tooltip>
+                    <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                      <BsGithub
+                        size={24}
+                        className="text-white text-3xl group-hover:text-accent"
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Github repository</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </Link>
             </div>
           </div>
           <div className="w-full xl:w-[50%]">

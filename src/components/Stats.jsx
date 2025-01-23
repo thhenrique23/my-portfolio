@@ -1,26 +1,24 @@
 "use client";
 import CountUp from "react-countup";
-
-const stats = [
-  {
-    num: 6,
-    text: "Years of experience",
-  },
-  {
-    num: 26,
-    text: "Projects completed",
-  },
-  {
-    num: 8,
-    text: "Technologies mastered",
-  },
-  {
-    num: 500,
-    text: "Code commits",
-  },
-];
-
-const Stats = () => {
+const Stats = ({ userStats }) => {
+  const stats = [
+    {
+      num: 6,
+      text: "Years of experience",
+    },
+    {
+      num: userStats?.totalRepositories ?? 0,
+      text: "Projects and studies",
+    },
+    {
+      num: userStats?.totalTechnologies ?? 0,
+      text: "Technologies mastered",
+    },
+    {
+      num: userStats?.totalCommits ?? 0,
+      text: "Code commits",
+    },
+  ];
   return (
     <section className="pt-4 pb-12 xl:pt-0 xl:pb-0">
       <div className="container mx-auto">

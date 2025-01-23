@@ -1,9 +1,30 @@
+"use client";
 import Photo from "@/components/Photo";
 import Social from "@/components/Social";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-const Home = () => {
+
+async function fetchGitHubStats() {
+  const res = await fetch("http://localhost:3000/api/github-stats", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch GitHub stats");
+  }
+
+  return res.json();
+}
+
+const Home = async () => {
+  const userStats = await fetchGitHubStats();
+  const handleDownload = () => {
+    const downloadUrl =
+      "https://drive.google.com/uc?id=1OyzRZdHZa8gEeA7UXgK_ooexCp7PdcX9&export=download";
+    window.open(downloadUrl, "_blank"); // Abre em uma nova aba para iniciar o download
+  };
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -15,15 +36,13 @@ const Home = () => {
               Hello I`m <br />{" "}
               <span className="text-accent">Thales Henrique</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80">
-              I excel at crafting elegant digital experiences and I am
-              proficient in various programming languages and technologies
-            </p>
+            <p className="max-w-[500px] mb-9 text-white/80">{userStats.bio}</p>
             {/*btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Button
                 variant="outline"
                 size="lg"
+                onClick={() => handleDownload()}
                 className="uppercase flex items-center gap-2"
               >
                 <span>Download CV</span>
@@ -43,7 +62,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Stats />
+      <Stats userStats={userStats} />
     </section>
   );
 };
