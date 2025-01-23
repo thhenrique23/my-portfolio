@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  publicRuntimeConfig: {
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
+  },
   async rewrites() {
     return [
       {
