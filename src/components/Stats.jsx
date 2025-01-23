@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 
-const Stats = async () => {
+const Stats = () => {
   const [stats, setStats] = useState([
     {
       num: 6,
