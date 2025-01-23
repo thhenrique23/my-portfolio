@@ -1,5 +1,5 @@
 const GITHUB_API_URL = "https://api.github.com";
-const GITHUB_TOKEN = "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";
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const USERNAME = "thhenrique23";
 
 export async function GET(request) {
