@@ -8,34 +8,16 @@ const Stats = () => {
       num: 6,
       text: "Years of experience",
     },
-    {
-      num: 16,
-      text: "Projects and studies",
-    },
-    {
-      num: 16,
-      text: "Technologies mastered",
-    },
-    {
-      num: 380,
-      text: "Code commits",
-    },
   ]);
 
   useEffect(() => {
     const fetchGitHubStats = async () => {
       try {
         const res = await fetch("/api/github-stats");
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
         const data = await res.json();
 
         setStats([
-          {
-            num: 6,
-            text: "Years of experience",
-          },
+          ...stats,
           {
             num: data?.totalRepositories ?? 0,
             text: "Projects and studies",
