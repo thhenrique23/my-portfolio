@@ -9,9 +9,9 @@ export async function GET() {
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       },
     });
+    console.log({ GITHUB_TOKEN, userResponse });
     if (!userResponse.ok) throw new Error("Failed to fetch user data");
     const userData = await userResponse.json();
-    console.log({ GITHUB_TOKEN, userData });
     const reposResponse = await fetch(
       `${GITHUB_API_URL}/users/${USERNAME}/repos?per_page=100`,
       {
@@ -65,9 +65,6 @@ export async function GET() {
       { status: 200 }
     );
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: "Failed to fetch GitHub stats" }),
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ error }), { status: 500 });
   }
 }
