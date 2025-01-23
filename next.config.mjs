@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+console.log(process.env);
 const nextConfig = {
   async rewrites() {
     return [
