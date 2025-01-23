@@ -1,12 +1,31 @@
 "use client";
-import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs, SiNodedotjs } from "react-icons/si";
+import {
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaDocker,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiKubernetes,
+  SiAwsorganizations,
+  SiNewrelic,
+  SiGrafana,
+  SiGithub,
+  SiNestjs,
+  SiAngular,
+  SiSplunk,
+  SiAmazons3,
+} from "react-icons/si";
 
 //about data
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet, consect Lorem ipsum dolor Lorem ipsum dolor",
+    "I’m a 27-year-old software developer from João Pessoa, Paraíba, Brazil. Passionate about programming, I specialize as a full-stack developer with a strong focus on frontend development. When I’m not coding, you’ll often find me enjoying life’s simple pleasures: traveling with friends, sipping on great drinks, or diving into something new to learn. I’m also a huge football fan, proudly supporting my favorite team, Fluminense. I thrive on creativity, problem-solving, and building meaningful digital experiences. Let’s connect and create something awesome together!",
   info: [
     {
       fieldName: "Name",
@@ -41,7 +60,7 @@ const experience = {
   icon: "/assets/resume/badhe.svg",
   title: "My experience",
   description:
-    "Lorem ipsm dolor sit amet, consectetur adipiscing elit. Sed auctor mi eget est condimentum, ac semper tortor faucibus. Curabitur consectetur consectetur neque, at condimentum velit pharetra vel.",
+    "Below are the companies I worked for during these 6 years of experience. From these companies, I acquired a lot of knowledge and had enormous challenges.",
   items: [
     {
       company: "PagSeguro PagBank",
@@ -50,7 +69,7 @@ const experience = {
     },
     {
       company: "Indra Minsait",
-      position: "PlSoftware Engineer",
+      position: "Pl Software Engineer",
       duration: "AUG 2020 – AUG 2021",
     },
     {
@@ -71,7 +90,7 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My education",
   description:
-    "Lorem ipsm dolor sit amet, consectetur adipiscing elit. Sed auctor mi eget est condimentum, ac semper tortor faucibus. Curabitur consectetur consectetur neque, at condimentum velit pharetra vel.",
+    "I believe that the pursuit of knowledge is essential for both professional and personal growth. Throughout my journey, I’ve had the opportunity to invest in my education and earn certifications that enhance my skills and expertise. ",
   items: [
     {
       institution: "Udemy",
@@ -130,7 +149,7 @@ const education = {
 const skills = {
   title: "My skills",
   description:
-    "Lorem ipsm dolor sit amet, consectetur adipiscing elit. Sed auctor mi eget est condimentum, ac semper tortor faucibus. Curabitur consectetur consectetur neque, at condimentum velit pharetra vel.",
+    "Over the years, I have developed a diverse skill set that enables me to adapt to different challenges and contribute effectively to projects. My technical and interpersonal skills include.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -157,8 +176,48 @@ const skills = {
       name: "tailwind.css",
     },
     {
-      icon: <SiNodedotjs />,
+      icon: <FaNodeJs />,
       name: "node.js",
+    },
+    {
+      icon: <SiKubernetes />,
+      name: "kubernetes",
+    },
+    {
+      icon: <FaDocker />,
+      name: "docker",
+    },
+    {
+      icon: <SiAwsorganizations />,
+      name: "aws",
+    },
+    {
+      icon: <SiNewrelic />,
+      name: "new relic",
+    },
+    {
+      icon: <SiGrafana />,
+      name: "grafana",
+    },
+    {
+      icon: <SiGithub />,
+      name: "github",
+    },
+    {
+      icon: <SiNestjs />,
+      name: "nest.js",
+    },
+    {
+      icon: <SiAngular />,
+      name: "angular",
+    },
+    {
+      icon: <SiAmazons3 />,
+      name: "amazon s3",
+    },
+    {
+      icon: <SiSplunk />,
+      name: "splunk",
     },
   ],
 };
@@ -267,26 +326,28 @@ const Resume = () => {
                   </p>
                 </div>
               </div>
-              <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px] gap-4">
-                {skills.skillList.map((skill, index) => {
-                  return (
-                    <li key={index}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                              {skill.icon}
-                            </div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="capitalize">{skill.name}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </li>
-                  );
-                })}
-              </ul>
+              <ScrollArea className="h-[400px]">
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px] gap-4">
+                  {skills.skillList.map((skill, index) => {
+                    return (
+                      <li key={index}>
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                {skill.icon}
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="capitalize">{skill.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </ScrollArea>
             </TabsContent>
             {/* about */}
             <TabsContent
