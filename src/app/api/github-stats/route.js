@@ -4,6 +4,7 @@ const USERNAME = "thhenrique23";
 
 export async function GET(request) {
   try {
+    console.log("AQUI");
     // 1. Obter dados do usuário (bio e total de repositórios)
     const userResponse = await fetch(`${GITHUB_API_URL}/users/${USERNAME}`, {
       headers: {

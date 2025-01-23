@@ -1,24 +1,61 @@
 "use client";
+import { useEffect, useState } from "react";
 import CountUp from "react-countup";
-const Stats = ({ userStats }) => {
-  const stats = [
+
+const Stats = async () => {
+  const [stats, setStats] = useState([
     {
       num: 6,
       text: "Years of experience",
     },
     {
-      num: userStats?.totalRepositories ?? 0,
+      num: 16,
       text: "Projects and studies",
     },
     {
-      num: userStats?.totalTechnologies ?? 0,
+      num: 16,
       text: "Technologies mastered",
     },
     {
-      num: userStats?.totalCommits ?? 0,
+      num: 380,
       text: "Code commits",
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    const fetchGitHubStats = async () => {
+      try {
+        const res = await fetch("/api/github-stats");
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const data = await res.json();
+
+        setStats([
+          {
+            num: 6,
+            text: "Years of experience",
+          },
+          {
+            num: data?.totalRepositories ?? 0,
+            text: "Projects and studies",
+          },
+          {
+            num: data?.totalTechnologies ?? 0,
+            text: "Technologies mastered",
+          },
+          {
+            num: data?.totalCommits ?? 0,
+            text: "Code commits",
+          },
+        ]);
+      } catch (error) {
+        return error;
+      }
+    };
+    fetchGitHubStats();
+  }, []);
+
   return (
     <section className="pt-4 pb-12 xl:pt-0 xl:pb-0">
       <div className="container mx-auto">

@@ -24,14 +24,6 @@ export const metadata = {
     description: "Check out my portfolio and discover my amazing projects!",
     url: "https://thales-portfolio.vercel.app/",
     siteName: "Thales Portfolio",
-    images: [
-      {
-        url: "https://thales-portfolio.vercel.app/assets/home.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Thales Portfolio Cover",
-      },
-    ],
     locale: "pt-BR",
     type: "website",
   },
