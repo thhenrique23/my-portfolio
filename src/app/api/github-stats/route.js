@@ -1,19 +1,17 @@
 const GITHUB_API_URL = "https://api.github.com";
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
 const USERNAME = "thhenrique23";
 
-export async function GET(request) {
+export async function GET() {
   try {
-    console.log("AQUI");
     // 1. Obter dados do usuário (bio e total de repositórios)
     const userResponse = await fetch(`${GITHUB_API_URL}/users/${USERNAME}`, {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       },
     });
     if (!userResponse.ok) throw new Error("Failed to fetch user data");
     const userData = await userResponse.json();
-
+    console.log({ GITHUB_TOKEN, userData });
     const reposResponse = await fetch(
       `${GITHUB_API_URL}/users/${USERNAME}/repos?per_page=100`,
       {
