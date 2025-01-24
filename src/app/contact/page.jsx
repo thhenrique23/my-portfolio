@@ -33,11 +33,15 @@ const INIT_FORM_DATA = {
   email: "",
   phone: "",
   email: "",
+  message: "",
 };
 const Contact = () => {
   const [formData, setFormData] = useState(INIT_FORM_DATA);
   const [typeAlert, setTypeAlert] = useState(null);
   const [disabledButton, setDisabledButton] = useState(false);
+
+  const validateForm =
+    formData.name && formData.email && formData.phone && formData.message;
 
   const closeAlertAfter = (delay) => {
     setTimeout(() => {
@@ -152,7 +156,7 @@ const Contact = () => {
               />
 
               <Button
-                disabled={disabledButton}
+                disabled={disabledButton || !validateForm}
                 onClick={handleSubmit}
                 size="md"
                 className="max-w-40"
